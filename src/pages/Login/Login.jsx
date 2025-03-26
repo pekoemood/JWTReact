@@ -16,31 +16,26 @@ const Login = () => {
 		formState: { errors },
 	} = useForm({ defaultValues });
 
-	const onsubmit = async ({ name, email, password }) => {
-		const response = await fetch("http://localhost:3000/signup", {
+	const onsubmit = async ({ email, password }) => {
+		const response = await fetch("http://localhost:3000/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				user: {
-					name,
 					email,
 					password,
 				},
-			}),
+			),
+			credentials: 'include',
 		});
     if(!response.ok){
       console.log("Sign up failed");
       return;
     }
 
-    console.log(response);
     const data = await response.json();
-    if(data.token) {
-      localStorage.setItem("authToken", data.token);
-    }
-
+		console.log(data);
     return navigate('/');
 	};
 
@@ -56,20 +51,6 @@ const Login = () => {
 
 			<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 				<form className="space-y-6" onSubmit={handleSubmit(onsubmit, onerror)}>
-					<div>
-						<label className="block font-medium text-gray-900" htmlFor="name">
-							Name
-						</label>
-						<div>
-							<input
-								className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600"
-								id="name"
-								type="text"
-								{...register("name")}
-							/>
-						</div>
-						<div>{errors.name?.message}</div>
-					</div>
 					<div>
 						<label className="block font-medium text-gray-900" htmlFor="name">
 							Email

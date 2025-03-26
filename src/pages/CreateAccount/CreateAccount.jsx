@@ -29,6 +29,7 @@ const CreateAccount = () => {
 					password,
 				},
 			}),
+      credentials: 'include',
 		});
     if(!response.ok){
       console.log("Sign up failed");
@@ -37,10 +38,7 @@ const CreateAccount = () => {
 
     console.log(response);
     const data = await response.json();
-    if(data.token) {
-      localStorage.setItem("authToken", data.token);
-    }
-
+    console.log(data);
     return navigate('/');
 	};
 
