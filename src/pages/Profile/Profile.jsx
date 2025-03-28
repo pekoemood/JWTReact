@@ -34,6 +34,10 @@ const Profile = () => {
 									<td className="px-2 py-2 text-gray-500 font-semibold">Email</td>
 									<td className="px-2 py-2">{data.email}</td>
 								</tr>
+								<tr>
+								<td className="px-2 py-2 text-gray-500 font-semibold">日付</td>
+								<td className="px-2 py-2">{data.created_at}</td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
