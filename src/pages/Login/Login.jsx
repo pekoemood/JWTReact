@@ -23,20 +23,19 @@ const Login = () => {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-					email,
-					password,
-				},
-			),
-			credentials: 'include',
+				email,
+				password,
+			}),
+			credentials: "include",
 		});
-    if(!response.ok){
-      console.log("Sign up failed");
-      return;
-    }
+		if (!response.ok) {
+			console.log("Sign up failed");
+			return;
+		}
 
-    const data = await response.json();
+		const data = await response.json();
 		console.log(data);
-    return navigate('/');
+		return navigate("/");
 	};
 
 	return (

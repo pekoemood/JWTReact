@@ -1,24 +1,20 @@
 import { useLoaderData } from "react-router-dom";
 
 export const profileLoader = async () => {
-  const token = localStorage.getItem('authToken');
-  const response = await fetch('http://localhost:3000/user', {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: 'include',
-  });
-  const data = await response.json();
-  console.log(data);
-  return { data }
-}
-
-
+	const response = await fetch("http://localhost:3000/user", {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		credentials: "include",
+	});
+	const data = await response.json();
+	console.log(data);
+	return { data };
+};
 
 const Profile = () => {
-  const { data } = useLoaderData();
-
+	const { data } = useLoaderData();
 
 	return (
 		<div className="flex items-center h-screen w-full justify-center">
@@ -31,12 +27,16 @@ const Profile = () => {
 						<table className="text-xs my-3">
 							<tbody>
 								<tr>
-									<td className="px-2 py-2 text-gray-500 font-semibold">Email</td>
+									<td className="px-2 py-2 text-gray-500 font-semibold">
+										Email
+									</td>
 									<td className="px-2 py-2">{data.email}</td>
 								</tr>
 								<tr>
-								<td className="px-2 py-2 text-gray-500 font-semibold">日付</td>
-								<td className="px-2 py-2">{data.created_at}</td>
+									<td className="px-2 py-2 text-gray-500 font-semibold">
+										日付
+									</td>
+									<td className="px-2 py-2">{data.created_at}</td>
 								</tr>
 							</tbody>
 						</table>
