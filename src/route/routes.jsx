@@ -24,6 +24,7 @@ const routes = createBrowserRouter([
         path: 'profile',
         element: <Profile />,
         loader: profileLoader,
+        errorElement: <ErrorPage />,
       },
       {
         path: 'logout',
